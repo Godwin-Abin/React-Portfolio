@@ -1,7 +1,7 @@
-import React,{useState,useEffect} from "react";
+import React from "react";
 import styled from 'styled-components';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { SiForgejo } from "react-icons/si"; //disroot git or forgejo git logo import
+import { SiForgejo, SiOrcid, SiIeee, SiScopus } from "react-icons/si"; //disroot git or forgejo git logo import
 // import FacebookIcon from '@mui/icons-material/Facebook';
 // import TwitterIcon from '@mui/icons-material/Twitter';
 import { BsTwitterX } from "react-icons/bs";
@@ -16,7 +16,6 @@ const FooterContainer = styled.div`
   justify-content: center;
   //background: linear-gradient(100.26deg, rgba(0, 102, 255, 0.05) 42.33%, rgba(150, 0, 225, 0.05) 127.07%);
 `;
-
 
 const FooterWrapper = styled.footer`
   width: 100%;
@@ -33,12 +32,6 @@ const Logo = styled.h1`
   font-weight: 600;
   font-size: 20px;
   color: ${({ theme }) => theme.primary};
-`;
-
-const Count = styled.h2`
-  font-weight: 400;
-  font-size: 20px;
-  // color: ${({ theme }) => theme.primary};
 `;
 
 const Nav = styled.nav`
@@ -95,19 +88,10 @@ const Copyright = styled.p`
 `;
 
 function Footer() {
-  const [count,setCount]=useState(500);
-
-  useEffect(()=>{
-    const storedCount=localStorage.getItem("PageVisits");
-    const initialCount=Number(storedCount)||499;
-    setCount(initialCount+1);
-    localStorage.setItem("pageVisits",initialCount+1);
-  },[]);
   return (
     <FooterContainer>
       <FooterWrapper>
         <Logo>G Abin Roy</Logo>
-        <Count>Total Page Visits : {count} +</Count>
         <Nav>
           <NavLink href="#about">About</NavLink>
           <NavLink href="#skills">Skills</NavLink>
@@ -122,11 +106,13 @@ function Footer() {
           <SocialMediaIcon href={Bio.twitter} target="display"><BsTwitterX /></SocialMediaIcon>
           <SocialMediaIcon href={Bio.linkedin} target="display"><LinkedInIcon /></SocialMediaIcon>
           <SocialMediaIcon href={"https://github.com/Godwin-Abin"} target="display"><GitHubIcon /></SocialMediaIcon>
+          <SocialMediaIcon href={"https://orcid.org/0009-0008-5869-2915"} target="display"><SiOrcid /></SocialMediaIcon>
+          <SocialMediaIcon href={"https://ieeexplore.ieee.org/author/460316178125202"} target="display"><SiIeee /></SocialMediaIcon>
+          <SocialMediaIcon href={"https://www.scopus.com/authid/detail.uri?authorId=59216245200"} target="display"><SiScopus /></SocialMediaIcon>
         </SocialMediaIcons>
         <Copyright>
           &copy; 2024 G Abin Roy. All rights reserved.
         </Copyright>
-
       </FooterWrapper>
     </FooterContainer>
   );
